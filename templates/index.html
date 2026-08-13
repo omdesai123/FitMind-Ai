@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FitMind AI — Your Personal AI Gym Trainer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+
+<!-- Ambient background pulse line (signature element) -->
+<svg class="bg-pulse" viewBox="0 0 1440 200" preserveAspectRatio="none" aria-hidden="true">
+  <path class="bg-pulse-path" d="M0,100 L200,100 L230,40 L260,160 L290,100 L500,100 L530,60 L560,140 L590,100 L900,100 L930,20 L960,180 L990,100 L1200,100 L1230,55 L1260,145 L1290,100 L1440,100" />
+</svg>
+
+<!-- ===================== WELCOME SCREEN ===================== -->
+<section id="welcome-screen" class="screen active">
+  <div class="welcome-wrap">
+    <div class="brand-mark">
+      <span class="pulse-dot"></span>
+      <span class="brand-name">FitMind <span class="accent">AI</span></span>
+    </div>
+
+    <h1 class="hero-heading">
+      Train Smarter.<br />
+      <span class="accent-gradient">Get Stronger.</span>
+    </h1>
+
+    <p class="hero-sub">
+      Your AI-powered personal gym trainer designed to help you achieve your fitness goals.
+    </p>
+
+    <button id="get-started-btn" class="btn-primary">
+      Get Started
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+
+    <div class="eyebrow-row">
+      <span>WORKOUTS</span><i></i><span>NUTRITION CUES</span><i></i><span>FORM TIPS</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== GOAL SELECTION SCREEN ===================== -->
+<section id="goal-screen" class="screen">
+  <div class="goal-wrap">
+    <h2 class="section-heading">Choose your goal</h2>
+    <p class="section-sub">Pick a focus and your trainer will tune every answer around it.</p>
+
+    <div class="goal-cards">
+      <button class="goal-card" data-goal="Muscle Gain">
+        <span class="goal-icon">💪</span>
+        <span class="goal-title">Muscle Gain</span>
+        <span class="goal-desc">Build muscle and increase strength with personalized workouts.</span>
+      </button>
+
+      <button class="goal-card" data-goal="Weight Loss">
+        <span class="goal-icon">🔥</span>
+        <span class="goal-title">Weight Loss</span>
+        <span class="goal-desc">Burn calories and improve your fitness with effective workouts.</span>
+      </button>
+
+      <button class="goal-card" data-goal="General Fitness">
+        <span class="goal-icon">⚡</span>
+        <span class="goal-title">General Fitness</span>
+        <span class="goal-desc">Stay active, healthy, and improve your overall fitness.</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CHAT SCREEN ===================== -->
+<section id="chat-screen" class="screen">
+  <div class="chat-layout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-top">
+        <div class="brand-mark small">
+          <span class="pulse-dot"></span>
+          <span class="brand-name">FitMind <span class="accent">AI</span></span>
+        </div>
+        <button id="new-chat-btn" class="btn-secondary full">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          New Chat
+        </button>
+      </div>
+
+      <div class="sidebar-goal">
+        <span class="sidebar-label">Current focus</span>
+        <span id="sidebar-goal-value" class="sidebar-goal-value">—</span>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a href="#" class="nav-item active"><span>💬</span>Chat</a>
+        <a href="#" class="nav-item"><span>📋</span>Workout Plan</a>
+        <a href="#" class="nav-item"><span>📈</span>Progress</a>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <button id="change-goal-btn" class="btn-ghost full">Change goal</button>
+      </div>
+    </aside>
+
+    <!-- Main chat -->
+    <main class="chat-main">
+      <header class="chat-header">
+        <div class="chat-header-left">
+          <span class="chat-header-title">🏋️ FitMind AI</span>
+          <span id="chat-header-goal" class="chat-header-goal">Muscle Gain</span>
+        </div>
+        <div class="chat-header-right">
+          <span class="status-dot"></span>
+          <span class="status-text">Active</span>
+        </div>
+      </header>
+
+      <div id="chat-messages" class="chat-messages">
+        <!-- messages injected by script.js -->
+      </div>
+
+      <form id="chat-form" class="chat-input-bar">
+        <input
+          id="chat-input"
+          type="text"
+          autocomplete="off"
+          placeholder="Ask your AI trainer anything..."
+        />
+        <button id="send-btn" type="submit" class="send-btn" aria-label="Send message">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </form>
+    </main>
+  </div>
+</section>
+
+<script src="/static/script.js"></script>
+</body>
+</html>

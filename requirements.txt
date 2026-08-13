@@ -1,0 +1,7 @@
+fastapi
+uvicorn[standard]
+jinja2
+python-dotenv
+langchain
+langchain-mistralai
+python-multipart
