@@ -1,10 +1,14 @@
+import os
 from dotenv import load_dotenv
 from langchain_mistralai import ChatMistralAI
 from langchain.messages import SystemMessage,HumanMessage,AIMessage
 
 load_dotenv()
 
-models=ChatMistralAI(model="mistral-small-latest")
+models=ChatMistralAI(
+    model="mistral-small-latest",
+    api_key=os.getenv("MISTRAL_API_KEY")
+)
 
 print("Choose Gym Trainer")
 print("press 1 for Muscle Gain")
