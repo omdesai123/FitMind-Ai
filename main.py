@@ -29,6 +29,7 @@ from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel
 
 import os
+import hashlib
 from dotenv import load_dotenv
 from langchain_mistralai import ChatMistralAI
 from langchain.messages import SystemMessage, HumanMessage, AIMessage
@@ -52,18 +53,21 @@ templates = Jinja2Templates(directory="templates")
 # ---------------------------------------------------------
 # Set up the Mistral chat model (same model as chatbot.py)
 # ---------------------------------------------------------
-MISTRAL_API_KEY = os.getenv("MISTRAL_API_KEY")
+MISTRAL_API_KEY = os.getenv("MISTRAL_API_KEY", "").strip()
+
+key_hash = hashlib.sha256(
+    MISTRAL_API_KEY.encode()
+).hexdigest()[:12]
 
 print("MISTRAL API KEY EXISTS:", bool(MISTRAL_API_KEY))
-print(
-    "MISTRAL API KEY LENGTH:",
-    len(MISTRAL_API_KEY) if MISTRAL_API_KEY else 0
-)
+print("MISTRAL API KEY LENGTH:", len(MISTRAL_API_KEY))
+print("MISTRAL API KEY FINGERPRINT:", key_hash)
 
 model = ChatMistralAI(
     model="mistral-small-latest",
     api_key=MISTRAL_API_KEY
 )
+
 # ---------------------------------------------------------
 # The three trainer modes (same text as chatbot.py)
 # ---------------------------------------------------------
